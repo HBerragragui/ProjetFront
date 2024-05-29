@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BASE_URL = 'http://localhost:8080/v1/employee/'
+const BASE_URL = process.env.BASE_URL
 
 export const getAllEmployees = () => {
     return axios.get(BASE_URL)
@@ -8,6 +8,7 @@ export const getAllEmployees = () => {
 
 export const saveEmployee = (employeeDTO) => {
     return axios.post(BASE_URL, employeeDTO)
+
 }
 
 export const updateEmployee = (id, employeeDTO) => {
