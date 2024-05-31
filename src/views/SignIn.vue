@@ -51,7 +51,7 @@ export default {
     },
     setup() {
         const auth = useAuth()
-        console.log(process.env.BASE_URL)
+        console.log(import.meta.env.VITE_BASE_URL)
         return { auth }
     }
 }
