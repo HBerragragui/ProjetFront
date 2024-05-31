@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BASE_URL = process.env.BASE_URL
+const BASE_URL = import.meta.env.Vite_BASE_URL
 
 export const getAllEmployees = () => {
     return axios.get(BASE_URL)
