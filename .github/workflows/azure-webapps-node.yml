@@ -47,10 +47,10 @@ jobs:
     
     - name: run ls
       run: |
-        ls
+        ls -l
     - uses: cschleiden/replace-tokens@v1
       with:
-        files: '["*.js"]'
+        files: '["**/*.js"]'
       env:
         VITE_BASE_URL: https://projet-back-dev.azurewebsites.net/v1/employee/
         AZURE_WEBAPP_NAME: Project-front-hbrg 
