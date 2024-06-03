@@ -2,11 +2,7 @@
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch:
-
-env:
-  AZURE_WEBAPP_NAME: Project-front-hbrg    
-  NODE_VERSION: '20.x'                
+  workflow_dispatch:           
 
 permissions:
   contents: read
@@ -20,17 +16,14 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: 20.x
         cache: 'npm'
 
     - name: npm install, build, and test
       run: |
         npm install
         npm run build 
-    - name: run ls
-      run: |
-        ls
-        
+
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
       with:
@@ -57,9 +50,10 @@ jobs:
         ls
     - uses: cschleiden/replace-tokens@v1
       with:
-        files: '["**/*.js"]'
+        files: '["*.js"]'
       env:
-        VITE_BASE_URL: https://somecdn.com/...
+        VITE_BASE_URL: https://projet-back-dev.azurewebsites.net/v1/employee/
+        AZURE_WEBAPP_NAME: Project-front-hbrg 
     - name: 'Deploy to Azure dev WebApp'
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
